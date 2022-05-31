@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  pdf:
+    build:
+      dockerfile: Dockerfile
+      context: ./.docker
+    volumes:
+      - .:/opt/app/api
