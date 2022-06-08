@@ -11,3 +11,17 @@ To run this application, it's necessary to have `go` 1.18+ and `docker`.
 go build
 ./pdf-service-poc
 ```
+
+
+remove result folders
+```sh
+rm -rf examples/result
+
+mkdir examples/result
+mkdir examples/result/pdf
+mkdir examples/result/split 
+mkdir examples/result/split/example 
+mkdir examples/result/split/generated 
+mkdir examples/result/merged      
+mkdir examples/result/jpg
+```

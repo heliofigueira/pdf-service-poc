@@ -29,10 +29,12 @@ func main() {
 	}
 
 	MergePdf(inFiles, "examples/result/merged/example.pdf")
-
 	PdfToJpg("examples/result/split/example/example.optimized_1.pdf", "examples/result/jpg/example.jpg", 400, 600)
 
-	ClearExamples()
+	data, _ := GetMetadata("examples/result/split/example/example.optimized_1.pdf")
+	println(data)
+
+	//ClearExamples()
 }
 
 func GenerateFromHtml(inFile string, outFile string) string {
@@ -126,6 +128,11 @@ func PdfToJpg(inFile string, outFile string, sizeX int, sizeY int) string {
 	}
 
 	return outFile
+}
+
+func GetMetadata(inFile string) ([]string, error) {
+
+	return api.InfoFile(inFile, nil, nil)
 }
 
 func ClearExamples() {
