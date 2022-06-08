@@ -1,3 +1,8 @@
 .idea
 ./tmp
 ./pdf-service-poc
+./examples/result/jpg/*
+./examples/result/merged/*
+./examples/result/pdf/*
+./examples/result/split/example/*
+./examples/result/split/generated/*
