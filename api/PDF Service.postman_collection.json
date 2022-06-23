@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "bec12406-3a0c-4f9a-85db-8894f47000c9",
+		"name": "PDF Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20753034"
+	},
+	"item": [
+		{
+			"name": "Merge",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"source\": [\n    \"url-identifier-for-and-uploaded-pdf\",\n    \"url-identifier-for-and-uploaded-pdf2\",\n    \"url-identifier-for-and-uploaded-pdf3\",\n    \"url-identifier-for-and-uploaded-pdf4\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/merge",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"merge"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resources\": [\n    \"url-identifier-for-and-uploaded-pdf\",\n    \"url-identifier-for-and-uploaded-pdf2\",\n    \"url-identifier-for-and-uploaded-pdf3\",\n    \"url-identifier-for-and-uploaded-pdf4\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/merge",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"merge"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"resources\" : [\n        \"url-identifier-for-and-uploaded-pdf\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Split",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"config\" : {\n        \"offset\" : 2,\n        \"limit\" : 2\n    },\n    \"source\": \"url-identifier-for-and-uploaded-pdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/split",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"split"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resources\": [\n    \"url-identifier-for-and-uploaded-pdf\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/split",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"split"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"resources\" : [\n        \"url-identifier-for-and-uploaded-pdf1\",\n        \"url-identifier-for-and-uploaded-pdf2\",\n        \"url-identifier-for-and-uploaded-pdf3\",\n        \"url-identifier-for-and-uploaded-pdf3\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "HTML to PDF",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"source\": [\n    \"base64-encoded-html\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/html2pdf",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"html2pdf"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"source\": [\n    \"base64-encoded-html\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/html2pdf",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"html2pdf"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"resources\" : [\n        \"url-identifier-for-and-uploaded-pdf\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "PDF to PNG",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"source\": [\n    \"url-identifier-for-and-uploaded-pdf\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pdf2png",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pdf2png"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resources\": [\n    \"url-identifier-for-and-uploaded-pdf\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pdf2png",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pdf2png"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"resources\" : [\n        \"url-identifier-for-and-uploaded-pdf\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Metadata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/metadata/:resource-identifier",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"metadata",
+						":resource-identifier"
+					],
+					"variable": [
+						{
+							"key": "resource-identifier",
+							"value": "dolore ex",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/metadata/:resource-identifier",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"metadata",
+								":resource-identifier"
+							],
+							"variable": [
+								{
+									"key": "resource-identifier",
+									"value": "dolore ex",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"source\" : \"url-identifier-for-and-uploaded-pdf\",\n    \"metadata\" : {\n        \"name\" : \"filename.pdf\",\n        \"size\" : 10000,\n        \"pages\" : 3,\n        \"author\" : \"Author name\",\n        \"version\" : 1\n    }\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://{{host}}",
+			"type": "string"
+		}
+	]
+}

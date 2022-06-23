@@ -1,0 +1,209 @@
+openapi: 3.0.0
+info:
+  title: PDF Service
+  version: 1.0.0
+servers:
+  - url: http://{{baseurl}}
+paths:
+  /merge:
+    post:
+      tags:
+        - default
+      summary: Merge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                source:
+                  - url-identifier-for-and-uploaded-pdf
+                  - url-identifier-for-and-uploaded-pdf2
+                  - url-identifier-for-and-uploaded-pdf3
+                  - url-identifier-for-and-uploaded-pdf4
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                resources:
+                  - url-identifier-for-and-uploaded-pdf
+  /split:
+    post:
+      tags:
+        - default
+      summary: Split
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                config:
+                  offset: 2
+                  limit: 2
+                source: url-identifier-for-and-uploaded-pdf
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                resources:
+                  - url-identifier-for-and-uploaded-pdf1
+                  - url-identifier-for-and-uploaded-pdf2
+                  - url-identifier-for-and-uploaded-pdf3
+                  - url-identifier-for-and-uploaded-pdf3
+  /html2pdf:
+    post:
+      tags:
+        - default
+      summary: HTML to PDF
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                source:
+                  - base64-encoded-html
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                resources:
+                  - url-identifier-for-and-uploaded-pdf
+  /pdf2png:
+    post:
+      tags:
+        - default
+      summary: PDF to PNG
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                source:
+                  - url-identifier-for-and-uploaded-pdf
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                resources:
+                  - url-identifier-for-and-uploaded-pdf
+  /metadata/{resource-identifier}:
+    get:
+      tags:
+        - default
+      summary: Metadata
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: resource-identifier
+          in: path
+          schema:
+            type: string
+          required: true
+          description: '(Required) '
+          example: dolore ex
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                source: url-identifier-for-and-uploaded-pdf
+                metadata:
+                  name: filename.pdf
+                  size: 10000
+                  pages: 3
+                  author: Author name
+                  version: 1
