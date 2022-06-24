@@ -1,6 +1,14 @@
 openapi: 3.0.0
 info:
   title: PDF Service
+  description: >-
+    Endpoint targets to handle PDF operations. Splits, Merges and conversion
+    should achieved by this service.
+
+
+    The PDF should already be uploaded and it's resource ID is used to perform
+    the operations. The document service is used to that, and to retrieve the
+    files.
   version: 1.0.0
 servers:
   - url: http://{{baseurl}}
@@ -10,6 +18,12 @@ paths:
       tags:
         - default
       summary: Merge
+      description: >-
+        Method used to combine multiple PDFs as pages into a single files.
+        They'll retain the same order as provided in the array.
+
+
+        If the PDF has multiple pages, all of those will be imported.
       requestBody:
         content:
           application/json:
@@ -52,6 +66,25 @@ paths:
       tags:
         - default
       summary: Split
+      description: >-
+        Method used to split one PDF document in multiple other PDFs documents.
+        You must specify the PDF source for the split.
+
+
+        The parameter `config` is **optional**
+
+
+        Inside `config` you can specify the following attributes :
+
+
+        *   `pages.0.offset` specifies where the page to be extracted start.
+
+        *   `pages.0.limit` specifies how many pages after the offset, are going
+        to be taken
+            
+
+        **Note :** Multiples intervals can be defined, and multiple pages will
+        be returned.
       requestBody:
         content:
           application/json:
@@ -59,8 +92,9 @@ paths:
               type: object
               example:
                 config:
-                  offset: 2
-                  limit: 2
+                  pages:
+                    - offset: 2
+                      limit: 2
                 source: url-identifier-for-and-uploaded-pdf
       parameters:
         - name: Content-Type
@@ -96,6 +130,12 @@ paths:
       tags:
         - default
       summary: HTML to PDF
+      description: >-
+        This method accepts and base64 encoded HTML and generated an PDF file
+        based on the markup provided.
+
+
+        Under the hood, it uses the wkhtml2pdf library to achieve that.
       requestBody:
         content:
           application/json:
@@ -135,6 +175,9 @@ paths:
       tags:
         - default
       summary: PDF to PNG
+      description: >-
+        This method generates and PNG based on a PDF file. If the PDF contain
+        multiple pages, the service will generate 1 result per page.
       requestBody:
         content:
           application/json:
@@ -174,6 +217,9 @@ paths:
       tags:
         - default
       summary: Metadata
+      description: >-
+        Returns useful information about the PDF, things like Author, File name,
+        Size in bytes and Number of Pages.
       parameters:
         - name: Accept
           in: header

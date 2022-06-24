@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "bec12406-3a0c-4f9a-85db-8894f47000c9",
 		"name": "PDF Service",
+		"description": "Endpoint targets to handle PDF operations. Splits, Merges and conversion should achieved by this service.\n\nThe PDF should already be uploaded and it's resource ID is used to perform the operations. The document service is used to that, and to retrieve the files.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20753034"
 	},
@@ -37,7 +38,8 @@
 					"path": [
 						"merge"
 					]
-				}
+				},
+				"description": "Method used to combine multiple PDFs as pages into a single files. They'll retain the same order as provided in the array.\n\nIf the PDF has multiple pages, all of those will be imported."
 			},
 			"response": [
 				{
@@ -94,7 +96,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"config\" : {\n        \"offset\" : 2,\n        \"limit\" : 2\n    },\n    \"source\": \"url-identifier-for-and-uploaded-pdf\"\n}",
+					"raw": "{\n    \"config\" : {\n        \"pages\" : [\n            { \"offset\" : 2, \"limit\" : 2 }\n        ]\n    },\n    \"source\": \"url-identifier-for-and-uploaded-pdf\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -109,7 +111,8 @@
 					"path": [
 						"split"
 					]
-				}
+				},
+				"description": "Method used to split one PDF document in multiple other PDFs documents. You must specify the PDF source for the split.\n\nThe parameter `config` is **optional**\n\nInside `config` you can specify the following attributes :\n\n*   `pages.0.offset` specifies where the page to be extracted start.\n*   `pages.0.limit` specifies how many pages after the offset, are going to be taken\n    \n\n**Note :** Multiples intervals can be defined, and multiple pages will be returned."
 			},
 			"response": [
 				{
@@ -119,7 +122,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"resources\": [\n    \"url-identifier-for-and-uploaded-pdf\"\n  ]\n}",
+							"raw": "{\n  \"source\": [\n    \"url-identifier-for-and-uploaded-pdf\"\n  ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -181,7 +184,8 @@
 					"path": [
 						"html2pdf"
 					]
-				}
+				},
+				"description": "This method accepts and base64 encoded HTML and generated an PDF file based on the markup provided.\n\nUnder the hood, it uses the wkhtml2pdf library to achieve that."
 			},
 			"response": [
 				{
@@ -253,7 +257,8 @@
 					"path": [
 						"pdf2png"
 					]
-				}
+				},
+				"description": "This method generates and PNG based on a PDF file. If the PDF contain multiple pages, the service will generate 1 result per page."
 			},
 			"response": [
 				{
@@ -320,7 +325,8 @@
 							"description": "(Required) "
 						}
 					]
-				}
+				},
+				"description": "Returns useful information about the PDF, things like Author, File name, Size in bytes and Number of Pages."
 			},
 			"response": [
 				{
