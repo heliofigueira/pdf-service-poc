@@ -71,20 +71,15 @@ paths:
         You must specify the PDF source for the split.
 
 
-        The parameter `config` is **optional**
-
-
         Inside `config` you can specify the following attributes :
 
 
-        *   `pages.0.offset` specifies where the page to be extracted start.
+        *   `pages` optional configuration for page splitting.
+            *   `pages.0.offset` specifies where the page to be extracted start.
+            *   `pages.0.limit` specifies how many pages after the offset, are going to be taken
 
-        *   `pages.0.limit` specifies how many pages after the offset, are going
-        to be taken
-            
-
-        **Note :** Multiples intervals can be defined, and multiple pages will
-        be returned.
+        **Note :** Multiples intervals can be defined, if so, multiple pages
+        will be returned.
       requestBody:
         content:
           application/json:

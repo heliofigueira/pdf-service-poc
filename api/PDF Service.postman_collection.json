@@ -112,7 +112,7 @@
 						"split"
 					]
 				},
-				"description": "Method used to split one PDF document in multiple other PDFs documents. You must specify the PDF source for the split.\n\nThe parameter `config` is **optional**\n\nInside `config` you can specify the following attributes :\n\n*   `pages.0.offset` specifies where the page to be extracted start.\n*   `pages.0.limit` specifies how many pages after the offset, are going to be taken\n    \n\n**Note :** Multiples intervals can be defined, and multiple pages will be returned."
+				"description": "Method used to split one PDF document in multiple other PDFs documents. You must specify the PDF source for the split.\n\nInside `config` you can specify the following attributes :\n\n*   `pages` optional configuration for page splitting.\n    *   `pages.0.offset` specifies where the page to be extracted start.\n    *   `pages.0.limit` specifies how many pages after the offset, are going to be taken\n\n**Note :** Multiples intervals can be defined, if so, multiple pages will be returned."
 			},
 			"response": [
 				{
