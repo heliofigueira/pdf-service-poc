@@ -1,4 +1,5 @@
 .idea
+pdf-service-poc
 ./tmp
 ./pdf-service-poc
 ./examples/result/jpg/*
